@@ -36,66 +36,68 @@
     
   </head>
   <body> 
-    <main id="main">
-      <div id="header"> <a href="/"> <img src="/asset/img/logo.png" alt="NICE GROCERY" width="1027" height="214"></a></div>
-      <div id="main-content"> 
-        <section class="section section2" id="news">
-          <div class="block"><a class="block-head" href="#news"> <span>news</span></a>
-            <div class="news-target"></div>
-          </div>
-        </section>
-        <p class="copy">2026 &copy; nice grocery</p>
-      </div>
-    </main>
-    <script>
-      const { createClient } = microcms
-      let newsLoaded = false
-      
-      const client = createClient({
-        serviceDomain: 'nicegrocery',
-        apiKey: '256AgCGNEAWRmuJd1LcJblhWI9NcrdRqVAGm',
-      })
-      
-      const newsTarget = document.querySelector('.news-target')
-      
-      client.get({ endpoint: 'news'}).then((res) => {
-        const items = res.contents || res
-        console.log(res)
-        let html = ''
-      
-        items.forEach((item, index) => {
-          const num = index + 1
-      
-          const date = new Date(item.publishedAt)
-          const y = date.getFullYear()
-          const m = String(date.getMonth() + 1).padStart(2, '0')
-          const d = String(date.getDate()).padStart(2, '0')
-          const formattedDate = `${y}.${m}.${d}`
-      
-          html = `
-            <div class="news-block block-inner">
-              <div class="news-item ">
-                <button class="news-head" data-hide="${num}">
-                  <div class="date">${formattedDate}</div>
-                  <h3>${item.title}</h3>
-                </button>
-                <div class="hide-content" data-hide-target="${num}">
-                  <div class="news-content">
-                    ${item.content}
+    <div class="scroll-wrapper">
+      <main id="main">
+        <div id="header"> <a href="/"> <img src="/asset/img/logo.png" alt="NICE GROCERY" width="1027" height="214"></a></div>
+        <div id="main-content"> 
+          <section class="section section2" id="news">
+            <div class="block"><a class="block-head" href="#news"> <span>news</span></a>
+              <div class="news-target"></div>
+            </div>
+          </section>
+          <p class="copy">2026 &copy; nice grocery</p>
+        </div>
+      </main>
+      <script>
+        const { createClient } = microcms
+        let newsLoaded = false
+        
+        const client = createClient({
+          serviceDomain: 'nicegrocery',
+          apiKey: '256AgCGNEAWRmuJd1LcJblhWI9NcrdRqVAGm',
+        })
+        
+        const newsTarget = document.querySelector('.news-target')
+        
+        client.get({ endpoint: 'news'}).then((res) => {
+          const items = res.contents || res
+          console.log(res)
+          let html = ''
+        
+          items.forEach((item, index) => {
+            const num = index + 1
+        
+            const date = new Date(item.publishedAt)
+            const y = date.getFullYear()
+            const m = String(date.getMonth() + 1).padStart(2, '0')
+            const d = String(date.getDate()).padStart(2, '0')
+            const formattedDate = `${y}.${m}.${d}`
+        
+            html = `
+              <div class="news-block block-inner">
+                <div class="news-item ">
+                  <button class="news-head" data-hide="${num}">
+                    <div class="date">${formattedDate}</div>
+                    <h3>${item.title}</h3>
+                  </button>
+                  <div class="hide-content" data-hide-target="${num}">
+                    <div class="news-content">
+                      ${item.content}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          `
-          newsTarget.insertAdjacentHTML('beforebegin', html)
+            `
+            newsTarget.insertAdjacentHTML('beforebegin', html)
+          })
+        
+          newsLoaded = true
+          document.dispatchEvent(new CustomEvent('news:loaded'))
+        
         })
-      
-        newsLoaded = true
-        document.dispatchEvent(new CustomEvent('news:loaded'))
-      
-      })
-      
-    </script>
-    <script src="/asset/js/script.js"></script>
+        
+      </script>
+      <script src="/asset/js/script.js"></script>
+    </div>
   </body>
 </html>

@@ -6,6 +6,7 @@ position = 0
 
 totalBlock = 4
 headSize = 39
+scrollWrapper = document.querySelector('.scroll-wrapper')
 
 if window.innerWidth < breakpoint
   isSp = true
@@ -36,27 +37,14 @@ document.addEventListener 'DOMContentLoaded', ()=>
   current_btm = current_pos + winH
   
 
-  
-  
-
-
-
-
 window.addEventListener "resize", (event) =>
   if window.innerWidth < breakpoint
     isSp = true
   else
     isSp = false
 
-window.addEventListener "orientationchange", (event) =>
-  if window.innerWidth < breakpoint
-    isSp = true
-  else
-    isSp = false
 
-
-
-window.addEventListener "scroll", (event) =>
+scrollWrapper.addEventListener "scroll", (event) =>
   scrollFunction()
 
 run = () =>
@@ -104,9 +92,8 @@ run = () =>
     
 # スクロール時の処理
 scrollFunction = ()->
-  winH = window.innerHeight
-  winW = window.innerWidth
-  current_pos = window.scrollY
+  winH = scrollWrapper.clientHeight
+  current_pos = scrollWrapper.scrollTop
   current_btm = current_pos + winH
   
   scrollObjects = document.querySelectorAll('.scroll-in')

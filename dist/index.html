@@ -36,101 +36,103 @@
     
   </head>
   <body> 
-    <main id="main">
-      <div id="header"> <a href="/"> <img src="./asset/img/logo.png" alt="NICE GROCERY" width="1027" height="214"></a></div>
-      <div id="main-visual"> 
-        <div class="images" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
-        <div class="text-area"> 
-          <p class="address"> <a href="https://maps.app.goo.gl/6MuZsC2U7jTQUWxL6" target="_blank">1F 12-9 Temmacho Aoi-ku,<br>Shizuoka-shi, Shizuoka-ken</a></p>
-          <p class="hour">OPEN: 11:00 - 18:00<br>CLOSE: Tuesday / Wednesday<br></p>
+    <div class="scroll-wrapper">
+      <main id="main">
+        <div id="header"> <a href="/"> <img src="./asset/img/logo.png" alt="NICE GROCERY" width="1027" height="214"></a></div>
+        <div id="main-visual"> 
+          <div class="images" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
+          <div class="text-area"> 
+            <p class="address"> <a href="https://maps.app.goo.gl/6MuZsC2U7jTQUWxL6" target="_blank">1F 12-9 Temmacho Aoi-ku,<br>Shizuoka-shi, Shizuoka-ken</a></p>
+            <p class="hour">OPEN: 11:00 - 18:00<br>CLOSE: Tuesday / Wednesday<br></p>
+          </div>
         </div>
-      </div>
-      <div id="main-content"> 
-        <section class="section section1" id="about">
-          <div class="block"><a class="block-head" href="#about"> <span>ABOUT US</span></a>
-            <div class="block-inner"> 
-              <picture> <img src="./asset/img/nicetomeetyou.png" alt="" width="2138" height="1556"></picture>
-              <div class="concept">
-                <p>ナイスをわたしとあなたに。<br>ナイスグロサリーのコンセプトは、<br>Nice to meet youを捩った<br>『Nice to Me, to You』です。<br>自分や相手や地元など、<br>当店を通じていいね！と言い合えたり、<br>感じることができたら<br>ナイスだなという思いから<br>名づけました。<br>肩肘はらず、コンビニライクで<br>気軽に使えるお店を目指しています。<br>あなたのナイスを探しにぜひお越しください。 </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
-        <section class="section section2" id="news">
-          <div class="block"><a class="block-head" href="#news"> <span>news</span></a>
-            <div class="news-target"></div><a class="more" href="/news/">More news &gt;</a>
-          </div>
-        </section>
-        <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
-        <section class="section section3" id="online">
-          <div class="block"><a class="block-head" href="#online"> <span>online store </span></a>
-            <div class="items"> <a class="item" href="" target="_blank">
-                <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
-                <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
-            <div class="items"> <a class="item" href="" target="_blank">
-                <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
-                <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
-          </div>
-        </section>
-        <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
-        <section class="section section4" id="contact">
-          <div class="block" id="contact"><a class="block-head" href="#contact"> <span>contact </span></a>
-            <div class="block-inner"> <a class="insta" href="https://www.instagram.com/nice_grocery_/" target="_blank"><img src="./asset/img/instagram.png" alt=""><span>@nice_grocery_</span></a><a class="email" href="mailTo:info@nice-grocery.com" target="_blank"> <img src="./asset/img/mail.png" alt=""><span>info@nice-grocery.com</span></a></div>
-          </div>
-        </section>
-        <p class="copy">2026 &copy; nice grocery</p>
-      </div>
-    </main>
-    <script>
-      const { createClient } = microcms
-      let newsLoaded = false
-      
-      const client = createClient({
-        serviceDomain: 'nicegrocery',
-        apiKey: '256AgCGNEAWRmuJd1LcJblhWI9NcrdRqVAGm',
-      })
-      
-      const newsTarget = document.querySelector('.news-target')
-      
-      client.get({ endpoint: 'news', queries: { limit: 3 }  }).then((res) => {
-        const items = res.contents || res
-        console.log(res)
-        let html = ''
-      
-        items.forEach((item, index) => {
-          const num = index + 1
-      
-          const date = new Date(item.publishedAt)
-          const y = date.getFullYear()
-          const m = String(date.getMonth() + 1).padStart(2, '0')
-          const d = String(date.getDate()).padStart(2, '0')
-          const formattedDate = `${y}.${m}.${d}`
-      
-          html = `
-            <div class="news-block block-inner">
-              <div class="news-item ">
-                <button class="news-head" data-hide="${num}">
-                  <div class="date">${formattedDate}</div>
-                  <h3>${item.title}</h3>
-                </button>
-                <div class="hide-content" data-hide-target="${num}">
-                  <div class="news-content">
-                    ${item.content}
-                  </div>
+        <div id="main-content"> 
+          <section class="section section1" id="about">
+            <div class="block"><a class="block-head" href="#about"> <span>ABOUT US</span></a>
+              <div class="block-inner"> 
+                <picture> <img src="./asset/img/nicetomeetyou.png" alt="" width="2138" height="1556"></picture>
+                <div class="concept">
+                  <p>ナイスをわたしとあなたに。<br>ナイスグロサリーのコンセプトは、<br>Nice to meet youを捩った<br>『Nice to Me, to You』です。<br>自分や相手や地元など、<br>当店を通じていいね！と言い合えたり、<br>感じることができたら<br>ナイスだなという思いから<br>名づけました。<br>肩肘はらず、コンビニライクで<br>気軽に使えるお店を目指しています。<br>あなたのナイスを探しにぜひお越しください。 </p>
                 </div>
               </div>
             </div>
-          `
-          newsTarget.insertAdjacentHTML('beforebegin', html)
+          </section>
+          <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
+          <section class="section section2" id="news">
+            <div class="block"><a class="block-head" href="#news"> <span>news</span></a>
+              <div class="news-target"></div><a class="more" href="/news/">More news &gt;</a>
+            </div>
+          </section>
+          <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
+          <section class="section section3" id="online">
+            <div class="block"><a class="block-head" href="#online"> <span>online store </span></a>
+              <div class="items"> <a class="item" href="" target="_blank">
+                  <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
+                  <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
+              <div class="items"> <a class="item" href="" target="_blank">
+                  <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
+                  <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
+            </div>
+          </section>
+          <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
+          <section class="section section4" id="contact">
+            <div class="block" id="contact"><a class="block-head" href="#contact"> <span>contact </span></a>
+              <div class="block-inner"> <a class="insta" href="https://www.instagram.com/nice_grocery_/" target="_blank"><img src="./asset/img/instagram.png" alt=""><span>@nice_grocery_</span></a><a class="email" href="mailTo:info@nice-grocery.com" target="_blank"> <img src="./asset/img/mail.png" alt=""><span>info@nice-grocery.com</span></a></div>
+            </div>
+          </section>
+          <p class="copy">2026 &copy; nice grocery</p>
+        </div>
+      </main>
+      <script>
+        const { createClient } = microcms
+        let newsLoaded = false
+        
+        const client = createClient({
+          serviceDomain: 'nicegrocery',
+          apiKey: '256AgCGNEAWRmuJd1LcJblhWI9NcrdRqVAGm',
         })
-      
-        newsLoaded = true
-        document.dispatchEvent(new CustomEvent('news:loaded'))
-      
-      })
-      
-    </script>
-    <script src="asset/js/script.js"></script>
+        
+        const newsTarget = document.querySelector('.news-target')
+        
+        client.get({ endpoint: 'news', queries: { limit: 3 }  }).then((res) => {
+          const items = res.contents || res
+          console.log(res)
+          let html = ''
+        
+          items.forEach((item, index) => {
+            const num = index + 1
+        
+            const date = new Date(item.publishedAt)
+            const y = date.getFullYear()
+            const m = String(date.getMonth() + 1).padStart(2, '0')
+            const d = String(date.getDate()).padStart(2, '0')
+            const formattedDate = `${y}.${m}.${d}`
+        
+            html = `
+              <div class="news-block block-inner">
+                <div class="news-item ">
+                  <button class="news-head" data-hide="${num}">
+                    <div class="date">${formattedDate}</div>
+                    <h3>${item.title}</h3>
+                  </button>
+                  <div class="hide-content" data-hide-target="${num}">
+                    <div class="news-content">
+                      ${item.content}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `
+            newsTarget.insertAdjacentHTML('beforebegin', html)
+          })
+        
+          newsLoaded = true
+          document.dispatchEvent(new CustomEvent('news:loaded'))
+        
+        })
+        
+      </script>
+      <script src="asset/js/script.js"></script>
+    </div>
   </body>
 </html>
