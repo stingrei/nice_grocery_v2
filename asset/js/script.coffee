@@ -130,18 +130,25 @@ anchorLink = ()->
   anchorLinksArr = Array.prototype.slice.call(anchorLinks)
 
   anchorLinksArr.forEach (link)=>
-    link.addEventListener 'click', (e)=> 
+    link.addEventListener 'click', (e)=>
       e.preventDefault()
+
       targetId = link.hash
-      targetElement = document.querySelector(targetId)
-      gap = 0 
+      targetElement = document.querySelector targetId
+      return unless targetElement
+
+      gap = 0
       if !isSp
         gap = 56
-      targetOffsetTop = window.pageYOffset + targetElement.getBoundingClientRect().top - gap
-      window.scrollTo({
-        top: targetOffsetTop,
-        behavior: "smooth"
-      })
+
+      wrapperRect = scrollWrapper.getBoundingClientRect()
+      targetRect = targetElement.getBoundingClientRect()
+
+      targetOffsetTop = scrollWrapper.scrollTop + targetRect.top - wrapperRect.top - gap
+
+      scrollWrapper.scrollTo
+        top: targetOffsetTop
+        behavior: 'smooth'
 
 flip = ()->
   document.querySelectorAll('[data-flip-pic]').forEach (that)=>

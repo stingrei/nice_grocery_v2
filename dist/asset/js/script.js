@@ -150,18 +150,23 @@
     anchorLinksArr = Array.prototype.slice.call(anchorLinks);
     return anchorLinksArr.forEach((link) => {
       return link.addEventListener('click', (e) => {
-        var gap, targetElement, targetId, targetOffsetTop;
+        var gap, targetElement, targetId, targetOffsetTop, targetRect, wrapperRect;
         e.preventDefault();
         targetId = link.hash;
         targetElement = document.querySelector(targetId);
+        if (!targetElement) {
+          return;
+        }
         gap = 0;
         if (!isSp) {
           gap = 56;
         }
-        targetOffsetTop = window.pageYOffset + targetElement.getBoundingClientRect().top - gap;
-        return window.scrollTo({
+        wrapperRect = scrollWrapper.getBoundingClientRect();
+        targetRect = targetElement.getBoundingClientRect();
+        targetOffsetTop = scrollWrapper.scrollTop + targetRect.top - wrapperRect.top - gap;
+        return scrollWrapper.scrollTo({
           top: targetOffsetTop,
-          behavior: "smooth"
+          behavior: 'smooth'
         });
       });
     });
