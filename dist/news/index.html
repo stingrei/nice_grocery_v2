@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMZ0LMTY3Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-BMZ0LMTY3Z');
+    </script>
+    <meta charset="utf-8">
+    <title>NICE GROCERY ナイスグロサリー</title>
+    <meta name="keywords" lang="ja" content="grocery, 静岡, グローサリーストア, shizuoka">
+    <meta name="description" lang="ja" content="はじめまして。ナイスグロサリーです。店内で焼き上げたパンやサンドイッチ、全国から揃えたこだわりの食材を販売する食料品店が静岡市にオープンいたします。あなたと私にちょっとしたナイスを。Nice to me to you">
+    <meta name="viewport" content="width=device-width,initial-scale=1.6,maximum-scale=1.0,user-scalable=yes">
+    <meta property="og:image" content="http://nice-grocery.com/asset/img/logo.png">
+    <meta property="og:description" content="はじめまして。ナイスグロサリーです。店内で焼き上げたパンやサンドイッチ、全国から揃えたこだわりの食材を販売する食料品店が静岡市にオープンいたします。あなたと私にちょっとしたナイスを。Nice to me to you">
+    <meta property="og:title" content="NICE GROCERY ナイスグロサリー">
+    <meta property="og:site_name" content="NICE GROCERY ナイスグロサリー">
+    <meta property="og:url" content="http://nice-grocery.com/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image"><script>
+    (function(d) {
+        var config = {
+        kitId: 'gto1eko',
+        scriptTimeout: 3000,
+        async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+    </script>
+    <link rel="stylesheet" href="/asset/css/style.css?11w">
+    <script src="https://unpkg.com/microcms-js-sdk@latest/dist/umd/microcms-js-sdk.js"></script>
+    
+  </head>
+  <body> 
+    <main id="main">
+      <div id="header"> <a href="/"> <img src="/asset/img/logo.png" alt="NICE GROCERY" width="1027" height="214"></a></div>
+      <div id="main-content"> 
+        <section class="section section2" id="news">
+          <div class="block"><a class="block-head" href="#news"> <span>news</span></a>
+            <div class="news-target"></div>
+          </div>
+        </section>
+        <p class="copy">2026 &copy; nice grocery</p>
+      </div>
+    </main>
+    <script>
+      const { createClient } = microcms
+      let newsLoaded = false
+      
+      const client = createClient({
+        serviceDomain: 'nicegrocery',
+        apiKey: '256AgCGNEAWRmuJd1LcJblhWI9NcrdRqVAGm',
+      })
+      
+      const newsTarget = document.querySelector('.news-target')
+      
+      client.get({ endpoint: 'news'}).then((res) => {
+        const items = res.contents || res
+        console.log(res)
+        let html = ''
+      
+        items.forEach((item, index) => {
+          const num = index + 1
+      
+          const date = new Date(item.publishedAt)
+          const y = date.getFullYear()
+          const m = String(date.getMonth() + 1).padStart(2, '0')
+          const d = String(date.getDate()).padStart(2, '0')
+          const formattedDate = `${y}.${m}.${d}`
+      
+          html = `
+            <div class="news-block block-inner">
+              <div class="news-item ">
+                <button class="news-head" data-hide="${num}">
+                  <div class="date">${formattedDate}</div>
+                  <h3>${item.title}</h3>
+                </button>
+                <div class="hide-content" data-hide-target="${num}">
+                  <div class="news-content">
+                    ${item.content}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `
+          newsTarget.insertAdjacentHTML('beforebegin', html)
+        })
+      
+        newsLoaded = true
+        document.dispatchEvent(new CustomEvent('news:loaded'))
+      
+      })
+      
+    </script>
+    <script src="/asset/js/script.js"></script>
+  </body>
+</html>

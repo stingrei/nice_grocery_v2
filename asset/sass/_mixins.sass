@@ -1,0 +1,52 @@
+@use 'config'
+//----------------
+//media query
+//----------------
+
+=pc($width: config.$breakpoint)
+  @media screen and (min-width: $width)
+    @content
+
+=sp($width: config.$breakpoint)
+  @media screen and (max-width: $width)
+    @content
+
+
+
+//----------------
+//responsive font size
+// arg ラフ上のフォントサイズ(px)
+//----------------
+@mixin font-size-responsive($size: 30px)
+  font-size: ($size/($base_wide_sp/100))*1vw
+
+//----------------
+//縦書き
+//----------------
+@mixin tategaki()
+  -webkit-writing-mode: vertical-rl
+  -ms-writing-mode: tb-rl
+  writing-mode: vertical-rl
+  font-feature-settings: 'pkna'
+
+
+// =============================================================================
+// font-faceを吐き出すmixin
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff ttf svg)
+  $src: null
+  $extmods: (svg: "#" + str-replace($name, " ", "_"))
+
+  $formats: (otf: "opentype", ttf: "truetype", eot: "embedded-opentype")
+
+  @each $ext in $exts
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma)
+
+  @font-face
+    font-family: quote($name)
+    font-style: $style
+    font-weight: $weight
+    src: $src
