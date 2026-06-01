@@ -66,12 +66,7 @@
           <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
           <section class="section section3" id="online">
             <div class="block"><a class="block-head" href="#online"> <span>online store </span></a>
-              <div class="items"> <a class="item" href="" target="_blank">
-                  <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
-                  <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
-              <div class="items"> <a class="item" href="" target="_blank">
-                  <div class="img"> <img src="./asset/img/item1.jpg" alt="" width="1350" height="1688"></div>
-                  <p class="item-name">オリジナルトートバッグ<br><span>¥1,980</span></p></a></div>
+              <div class="online-target"></div>
             </div>
           </section>
           <div class="gallery" data-flip-pic="3"><img class="show" src="./asset/img/mv1.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv2.jpg" alt="" width="2636" height="2144"><img src="./asset/img/mv3.jpg" alt="" width="2636" height="2144"></div>
@@ -124,6 +119,32 @@
               </div>
             `
             newsTarget.insertAdjacentHTML('beforebegin', html)
+          })
+        
+          //- newsLoaded = true
+          //- document.dispatchEvent(new CustomEvent('news:loaded'))
+        
+        })
+        
+        const onlineTarget = document.querySelector('.online-target')
+        
+        client.get({ endpoint: 'online-item', queries: { limit: 3 }  }).then((res) => {
+          const items = res.contents || res
+          console.log(res)
+          let html = ''
+        
+          items.forEach((item, index) => {
+            html = `
+              <div class="items">
+                <a class="item" href="${item.link}" target="_blank">
+                  <div class="img">
+                    <img src="${item.image.url}" alt="${item.itemname}" width="1350" height="1688">
+                  </div>
+                  <p class="item-name">${item.itemname}<br><span>${item.price}</span></p>
+                </a>
+              </div>
+            `
+            onlineTarget.insertAdjacentHTML('beforebegin', html)
           })
         
           newsLoaded = true

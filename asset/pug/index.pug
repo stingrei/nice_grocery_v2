@@ -62,18 +62,19 @@ block body
         .block
           a.block-head(href="#online") 
             span online store 
-          .items 
-            a.item(href="", target="_blank")
-              .img 
-                img(src=imagePath+"item1.jpg", alt="", width=1350, height=1688)
-              p.item-name オリジナルトートバッグ<br>
-                span ¥1,980
-          .items 
-            a.item(href="", target="_blank")
-              .img 
-                img(src=imagePath+"item1.jpg", alt="", width=1350, height=1688)
-              p.item-name オリジナルトートバッグ<br>
-                span ¥1,980
+          .online-target
+            //- .items 
+            //-   a.item(href="", target="_blank")
+            //-     .img 
+            //-       img(src=imagePath+"item1.jpg", alt="", width=1350, height=1688)
+            //-     p.item-name オリジナルトートバッグ<br>
+            //-       span ¥1,980
+            //- .items 
+            //-   a.item(href="", target="_blank")
+            //-     .img 
+            //-       img(src=imagePath+"item1.jpg", alt="", width=1350, height=1688)
+            //-     p.item-name オリジナルトートバッグ<br>
+            //-       span ¥1,980
 
       .gallery(data-flip-pic=3)
         img(src=imagePath+"mv1.jpg", alt="", width=2636, height=2144).show
@@ -135,6 +136,32 @@ block body
           </div>
         `
         newsTarget.insertAdjacentHTML('beforebegin', html)
+      })
+
+      //- newsLoaded = true
+      //- document.dispatchEvent(new CustomEvent('news:loaded'))
+
+    })
+
+    const onlineTarget = document.querySelector('.online-target')
+
+    client.get({ endpoint: 'online-item', queries: { limit: 3 }  }).then((res) => {
+      const items = res.contents || res
+      console.log(res)
+      let html = ''
+
+      items.forEach((item, index) => {
+        html = `
+          <div class="items">
+            <a class="item" href="${item.link}" target="_blank">
+              <div class="img">
+                <img src="${item.image.url}" alt="${item.itemname}" width="1350" height="1688">
+              </div>
+              <p class="item-name">${item.itemname}<br><span>${item.price}</span></p>
+            </a>
+          </div>
+        `
+        onlineTarget.insertAdjacentHTML('beforebegin', html)
       })
 
       newsLoaded = true
