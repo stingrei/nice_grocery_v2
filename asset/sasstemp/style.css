@@ -478,9 +478,16 @@ html body #main-content .gallery {
   margin-inline: auto;
   border-radius: 14px;
   overflow: hidden;
+  aspect-ratio: 1500/1000;
+}
+html body #main-content .gallery.tate {
+  aspect-ratio: 1000/1500;
 }
 html body #main-content .gallery img {
   z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: opacity 1s ease 2s;
 }
 html body #main-content .gallery img.show {
