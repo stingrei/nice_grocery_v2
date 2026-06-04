@@ -258,12 +258,17 @@ html
               top: 50%
               translate: 0 -50%
               transition: .4s ease
+            &.no-fixed 
+              position: absolute
+              bottom: calc(100% - var(--section-head-height)) !important
           .block-inner
             width: p(297, 345)
             margin-inline: auto 
             background-color: var(--bg)
             border-radius: 13px
 
+
+              
         &.on
           .block
             .block-head
@@ -278,7 +283,7 @@ html
 
 
       .section
-        &#about
+        &#concept
           .block-inner
             padding-block: 30px
             picture
@@ -292,6 +297,58 @@ html
                 line-height: calc(29/12)
                 text-align: center
                 margin-top: 1.5em
+        &#about 
+          .block
+            .block-head
+              span 
+                right: 50%
+                translate: 50% -30%
+          .block-inner
+            padding-block: 30px
+            position: relative
+            +.block-inner
+              margin-top: 20px  
+            img
+              position: absolute
+              right: 0
+              top: 0
+              width: 40px
+            &.grocery
+              img
+                right: 15px
+                top: 10px
+            &.bread
+              img
+                &:nth-child(1)
+                  right: 45px
+                  top: 10px
+                  width: 25px
+                  rotate: -45deg
+                &:nth-child(2)
+                  right: 15px
+                  top: 10px
+                  width: 35px
+
+            &.cafe
+              img
+                right: 18px
+                top: 10px
+                width: 25px
+                rotate: 20deg
+            .about-inner
+              padding-inline: 20px
+              position: relative
+
+              h3
+                font-weight: bold
+                font-size: 1.4rem
+                margin-bottom: 10px
+                margin-top: 20px
+                &:nth-child(1)
+                  margin-top: 0
+              p
+                font-size: 1.2rem
+                line-height: calc(23/12)
 
         &#news
           .news-item

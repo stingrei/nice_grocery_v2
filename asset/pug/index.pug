@@ -3,7 +3,7 @@ block pageInfo
     -
         var title = 'NICE GROCERY ナイスグロサリー' ;
         var description = 'はじめまして。ナイスグロサリーです。店内で焼き上げたパンやサンドイッチ、全国から揃えたこだわりの食材を販売する食料品店が静岡市にオープンいたします。あなたと私にちょっとしたナイスを。Nice to me to you';
-        var ogpimg = 'http://nice-grocery.com/asset/img/logo.png';
+        var ogpimg = 'http://nice-grocery.com/asset/img/ogp.jpg';
         var date = '';
         var url = 'http://nice-grocery.com/';
         var siteName = 'NICE GROCERY ナイスグロサリー';
@@ -28,28 +28,58 @@ block body
       .text-area 
         p.address 
           a(href="https://maps.app.goo.gl/6MuZsC2U7jTQUWxL6", target="_blank") 1F 12-9 Temmacho Aoi-ku,<br>Shizuoka-shi, Shizuoka-ken
-        p.hour OPEN: 11:00 - 18:00<br>CLOSE: Tuesday / Wednesday<br>
+        p.hour OPEN: 11:00 - 18:00<br>CLOSE: Tuesday / Wednesday
 
     #main-content 
-      section.section.section1#about
+      section.section.section1#concept.starget-section
         .block
-          a.block-head(href="#about") 
-            span ABOUT US
+          a.block-head(href="#concept") 
+            h2
+              span CONCEPT
           .block-inner 
             picture 
               img(src=imagePath+"nicetomeetyou.png", alt="", width=2138, height=1556)
             .concept
               p ナイスをわたしとあなたに。<br>ナイスグロサリーのコンセプトは、<br>Nice to meet youを捩った<br>『Nice to Me, to You』です。<br>自分や相手や地元など、<br>当店を通じていいね！と言い合えたり、<br>感じることができたら<br>ナイスだなという思いから<br>名づけました。<br>肩肘はらず、コンビニライクで<br>気軽に使えるお店を目指しています。<br>あなたのナイスを探しにぜひお越しください。 
       
+      section.section.section1-2#about.on
+        .block
+          a.block-head(href="#about")
+            h2
+              span ABOUT STORE
+          .block-inner.grocery
+            img(src=imagePath+"icon-grocery.png", alt="", width=1350, height=900).scroll-in
+            .about-inner
+              
+              h3 ＜GROCERY＞
+              p  全国から取り寄せたナイスな調味料。<br>基本的に無添加やオーガニックなどの商品を取り扱っています。
+          .block-inner.bread
+            img(src=imagePath+"icon-bread.png", alt="", width=1350, height=900).scroll-in
+            img(src=imagePath+"icon-dounut.png", alt="", width=1350, height=900).scroll-in
+            .about-inner
+              
+              h3  ＜BREAD＆DONUTS＞
+              p  店内で焼き上げたパンやドーナツ。<br>毎日食べても飽きない、ごはんのような存在のパンをご用意しています。<br>ドーナツは卵や乳製品不使用のもっちりとしたドーナツ。朝ごはんや仕事の合間にぴったりです。
+          .block-inner.cafe
+            img(src=imagePath+"icon-cafe.png", alt="", width=1350, height=900).scroll-in
+            .about-inner
+              
+              h3 ＜CAFE＞
+              p 店内にはパンやドーナツ、ドリンクをお買い物の合間にお召し上がりいただけるイートインスペースをご用意しています。<br>曜日限定でカフェメニューもございます。
+          .block-inner
+            .about-inner
+              h3 ⚠️Notes⚠️
+              p 曜日ごとの営業時間はInstagramまたはNEWSをご確認ください。<br>※駐車場のご用意はございません。公共交通機関または近隣のコインパーキングをご利用ください。
       .gallery(data-flip-pic=3.4)
         img(src=imagePath+"ph1.jpg", alt="", width=2636, height=2144).show
         img(src=imagePath+"ph2.jpg", alt="", width=2636, height=2144)
         img(src=imagePath+"ph3.jpg", alt="", width=2636, height=2144)
       
-      section.section.section2#news
+      section.section.section2#news.starget-section
         .block
           a.block-head(href="#news") 
-            span news
+            h2
+              span news
           .news-target
           a.more(href="/news/") More news &gt;
         
@@ -59,10 +89,11 @@ block body
         img(src=imagePath+"ph6.jpg", alt="", width=2636, height=2144)
         img(src=imagePath+"ph7.jpg", alt="", width=2636, height=2144)
       
-      section.section.section3#online
+      section.section.section3#online.starget-section
         .block
           a.block-head(href="#online") 
-            span online store 
+            h2
+              span online store 
           .online-target
             //- .items 
             //-   a.item(href="", target="_blank")
@@ -83,10 +114,11 @@ block body
         img(src=imagePath+"ph10.jpg", alt="", width=2636, height=2144)
         img(src=imagePath+"ph11.jpg", alt="", width=2636, height=2144)
 
-      section.section.section4#contact
+      section.section.section4#contact.starget-section
         .block#contact
           a.block-head(href="#contact") 
-            span contact 
+            h2
+              span contact 
           .block-inner 
             a.insta(href="https://www.instagram.com/nice_grocery_/", target="_blank")
               img(src=imagePath+"instagram.png", alt="") 

@@ -115,7 +115,7 @@ scrollFunction = ()->
     else
       toggleObject.classList.remove('bottom')
 
-  document.querySelectorAll('.section').forEach (section, i) ->
+  document.querySelectorAll('.starget-section').forEach (section, i) ->
     headGap = (totalBlock - i ) * headSize
     # block.style.bottom = block.clientHeight * -1 + headMargin + 'px' 
     if section.getBoundingClientRect().top <= winH - headGap
@@ -137,7 +137,7 @@ anchorLink = ()->
       targetElement = document.querySelector targetId
       return unless targetElement
 
-      gap = 0
+      gap = 30
       if !isSp
         gap = 56
 

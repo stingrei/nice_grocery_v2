@@ -131,7 +131,7 @@
         return toggleObject.classList.remove('bottom');
       }
     });
-    return document.querySelectorAll('.section').forEach(function(section, i) {
+    return document.querySelectorAll('.starget-section').forEach(function(section, i) {
       var headGap;
       headGap = (totalBlock - i) * headSize;
       // block.style.bottom = block.clientHeight * -1 + headMargin + 'px' 
@@ -157,7 +157,7 @@
         if (!targetElement) {
           return;
         }
-        gap = 0;
+        gap = 30;
         if (!isSp) {
           gap = 56;
         }

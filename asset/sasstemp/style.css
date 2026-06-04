@@ -576,6 +576,10 @@ html body #main-content .section .block .block-head span {
   translate: 0 -50%;
   transition: 0.4s ease;
 }
+html body #main-content .section .block .block-head.no-fixed {
+  position: absolute;
+  bottom: calc(100% - var(--section-head-height)) !important;
+}
 html body #main-content .section .block .block-inner {
   width: 86.0869565217%;
   margin-inline: auto;
@@ -595,19 +599,74 @@ html body #main-content .section.on .block .block-head span {
   right: 50%;
   translate: 50% -30%;
 }
-html body #main-content .section#about .block-inner {
+html body #main-content .section#concept .block-inner {
   padding-block: 30px;
 }
-html body #main-content .section#about .block-inner picture {
+html body #main-content .section#concept .block-inner picture {
   width: 84.8484848485%;
   margin-inline: auto;
   display: block;
 }
-html body #main-content .section#about .block-inner .concept p {
+html body #main-content .section#concept .block-inner .concept p {
   font-size: 1.2rem;
   line-height: 2.4166666667;
   text-align: center;
   margin-top: 1.5em;
+}
+html body #main-content .section#about .block .block-head span {
+  right: 50%;
+  translate: 50% -30%;
+}
+html body #main-content .section#about .block-inner {
+  padding-block: 30px;
+  position: relative;
+}
+html body #main-content .section#about .block-inner + .block-inner {
+  margin-top: 20px;
+}
+html body #main-content .section#about .block-inner img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+}
+html body #main-content .section#about .block-inner.grocery img {
+  right: 15px;
+  top: 10px;
+}
+html body #main-content .section#about .block-inner.bread img:nth-child(1) {
+  right: 45px;
+  top: 10px;
+  width: 25px;
+  rotate: -45deg;
+}
+html body #main-content .section#about .block-inner.bread img:nth-child(2) {
+  right: 15px;
+  top: 10px;
+  width: 35px;
+}
+html body #main-content .section#about .block-inner.cafe img {
+  right: 18px;
+  top: 10px;
+  width: 25px;
+  rotate: 20deg;
+}
+html body #main-content .section#about .block-inner .about-inner {
+  padding-inline: 20px;
+  position: relative;
+}
+html body #main-content .section#about .block-inner .about-inner h3 {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+html body #main-content .section#about .block-inner .about-inner h3:nth-child(1) {
+  margin-top: 0;
+}
+html body #main-content .section#about .block-inner .about-inner p {
+  font-size: 1.2rem;
+  line-height: 1.9166666667;
 }
 html body #main-content .section#news .news-item {
   padding: 20px;
