@@ -472,6 +472,9 @@ html body #main-content {
     padding-top: 34px;
   }
 }
+html body #main-content:has(.block-head.normal) {
+  padding-top: 34px;
+}
 html body #main-content .gallery {
   margin-bottom: 38px;
   width: 92%;
@@ -525,6 +528,9 @@ html body #main-content .section .block {
   padding-bottom: 30px;
   padding-top: 15px;
 }
+html body #main-content .section .block:has(.block-head.normal) {
+  position: relative;
+}
 html body #main-content .section .block .block-head {
   width: 92%;
   height: var(--section-head-height);
@@ -540,6 +546,17 @@ html body #main-content .section .block .block-head {
   border: 1px solid var(--hilight);
   border-bottom: none;
   border-radius: 14px 14px 0 0;
+}
+html body #main-content .section .block .block-head.normal {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 0 !important;
+  margin-left: -1px;
+  width: calc(100% + 2px);
+}
+html body #main-content .section .block .block-head.normal span {
+  right: 50%;
+  translate: 50% -30%;
 }
 @media screen and (min-width: 980px) {
   html body #main-content .section .block .block-head {
@@ -598,6 +615,16 @@ html body #main-content .section.on .block .block-head {
 html body #main-content .section.on .block .block-head span {
   right: 50%;
   translate: 50% -30%;
+}
+html body #main-content .section .more {
+  width: fit-content;
+  margin-inline: auto;
+  font-family: "canada-type-gibson", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
 }
 html body #main-content .section#concept .block-inner {
   padding-block: 30px;
@@ -668,6 +695,9 @@ html body #main-content .section#about .block-inner .about-inner p {
   font-size: 1.2rem;
   line-height: 1.9166666667;
 }
+html body #main-content .section#about .block-inner .about-inner p a {
+  text-decoration: underline;
+}
 html body #main-content .section#news .news-item {
   padding: 20px;
   margin-bottom: 14px;
@@ -690,16 +720,6 @@ html body #main-content .section#news .news-item .news-head h3 {
   line-height: 1.5;
   margin-top: 5px;
   font-weight: 600;
-}
-html body #main-content .section#news .more {
-  width: fit-content;
-  margin-inline: auto;
-  font-family: "canada-type-gibson", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  display: block;
-  margin-top: 10px;
-  font-size: 1.5rem;
 }
 html body #main-content .section#online .items .item {
   width: 80.4713804714%;

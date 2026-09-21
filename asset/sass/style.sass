@@ -163,6 +163,8 @@ html
         width: calc(var(--main-content-width) * 1.5)
         margin-inline: auto
         padding-top: 34px
+      &:has(.block-head.normal)
+        padding-top: 34px
       .gallery
         margin-bottom: 38px
         width: p(345)
@@ -215,8 +217,9 @@ html
           padding-bottom: 30px
           padding-top: 15px
           // height: 1000px
-
-
+          // position: relative
+          &:has(.block-head.normal)
+            position: relative
           .block-head
             width: p(345)
             height: var(--section-head-height)
@@ -232,6 +235,15 @@ html
             border: 1px solid var(--hilight)
             border-bottom: none
             border-radius: 14px 14px 0 0
+            &.normal
+              position: absolute
+              bottom: 100%
+              margin-bottom: 0 !important
+              margin-left: -1px
+              width: calc(100% + 2px)
+              span 
+                right: 50%
+                translate: 50% -30%
             +pc 
               margin-right: calc(var(--main-content-width)* 0.04)
               width: calc(var(--main-content-width)*.92*1.5)
@@ -283,6 +295,13 @@ html
 
 
       .section
+        .more
+          width: fit-content
+          margin-inline: auto
+          +font-gibson(600)
+          display: block
+          margin-top: 10px
+          font-size: 1.5rem
         &#concept
           .block-inner
             padding-block: 30px
@@ -349,6 +368,8 @@ html
               p
                 font-size: 1.2rem
                 line-height: calc(23/12)
+                a
+                  text-decoration: underline
 
         &#news
           .news-item
@@ -370,13 +391,7 @@ html
                 line-height: 1.5
                 margin-top: 5px
                 font-weight: 600
-          .more
-            width: fit-content
-            margin-inline: auto
-            +font-gibson(600)
-            display: block
-            margin-top: 10px
-            font-size: 1.5rem
+          
 
         &#online
           .items
