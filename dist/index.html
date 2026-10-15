@@ -161,7 +161,7 @@
         
         const onlineTarget = document.querySelector('.online-target')
         
-        client.get({ endpoint: 'online-item', queries: { limit: 3 }  }).then((res) => {
+        client.get({ endpoint: 'online-item', queries: { limit: 100 }  }).then((res) => {
           const items = res.contents || res
           console.log(res)
           let html = ''
